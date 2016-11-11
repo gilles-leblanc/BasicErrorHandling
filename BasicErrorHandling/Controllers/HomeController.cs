@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace BasicErrorHandling.Controllers
@@ -16,6 +13,9 @@ namespace BasicErrorHandling.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            // throw an erorr to test exception handling
+            throw new Exception();
 
             return View();
         }
