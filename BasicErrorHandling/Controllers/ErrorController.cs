@@ -5,8 +5,9 @@ namespace BasicErrorHandling.Controllers
     public class ErrorController : Controller
     {
         // GET: Error
-        public ActionResult Index()
+        public ActionResult Index(string message)
         {
+            TempData["errorMessage"] = message;
             return View();
         }
     }

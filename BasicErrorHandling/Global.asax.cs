@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -17,15 +18,16 @@ namespace BasicErrorHandling
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            var raisedException = Server.GetLastError();
+            // get error and clear it 
+            var exception = Server.GetLastError();
+            Server.ClearError();
 
             // log error
-            // fictious logging call
-            // log.logException(raisedException.ToString());
+            // ...
 
             // redirect to error page
-            Server.ClearError();
-            Response.Redirect("/Error");
+            string message = Regex.Replace(exception.Message, @"\t|\n|\r", ""); // replace newlines which will not work with query string
+            Response.Redirect("/Error/?message=" + message);
         }
     }
 }

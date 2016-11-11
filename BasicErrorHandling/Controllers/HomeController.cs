@@ -14,8 +14,8 @@ namespace BasicErrorHandling.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            // throw an erorr to test exception handling
-            throw new Exception();
+            // throw an error to test exception handling
+            throw new Exception("Fictious error");
 
             return View();
         }
